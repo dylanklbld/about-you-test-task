@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "module": "esnext",
+    "target": "esnext",
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "strict": false,
+    "noImplicitAny": false,
+    "noStrictGenericChecks": false,
+    "sourceMap": true,
+    "resolveJsonModule": true
+  }
+}

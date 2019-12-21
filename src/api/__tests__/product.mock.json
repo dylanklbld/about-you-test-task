@@ -1,0 +1,774 @@
+{
+  "id": 4299563,
+  "isActive": true,
+  "isSoldOut": false,
+  "isNew": false,
+  "createdAt": "2019-06-11T07:19:22+02:00",
+  "updatedAt": "2019-08-30T15:11:53+02:00",
+  "masterKey": "80554-131",
+  "referenceKey": "Nzg0ODUyMjg4c2Nod2Fyeg==",
+  "attributes": {
+    "brand": {
+      "id": 550,
+      "key": "brand",
+      "label": "Marke",
+      "type": "",
+      "multiSelect": false,
+      "values": {
+        "id": 290,
+        "label": "ADIDAS ORIGINALS",
+        "value": "adidas_originals"
+      }
+    }
+  },
+  "images": [
+    {
+      "hash": "a3b91294fc6c999c6dc59af95c5d9a30",
+      "attributes": {
+        "imageType": {
+          "id": 1252,
+          "key": "imageType",
+          "label": "Bild Typ",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66480,
+            "label": "Büste",
+            "value": "bust"
+          }
+        },
+        "imageFocus": {
+          "id": 1253,
+          "key": "imageFocus",
+          "label": "Bild Fokus",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66484,
+            "label": "Produkt",
+            "value": "product"
+          }
+        },
+        "imageView": {
+          "id": 1254,
+          "key": "imageView",
+          "label": "Bild Ansicht",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66486,
+            "label": "Frontalansicht",
+            "value": "front"
+          }
+        },
+        "imageNextDetailLevel": {
+          "id": 1257,
+          "key": "imageNextDetailLevel",
+          "label": "Bild Detaillevel",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66496,
+            "label": "40",
+            "value": "40"
+          }
+        },
+        "imageBackground": {
+          "id": 1258,
+          "key": "imageBackground",
+          "label": "Bild Hintergrund",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66504,
+            "label": "weiß",
+            "value": "white"
+          }
+        },
+        "imageGender": {
+          "id": 1259,
+          "key": "imageGender",
+          "label": "Bild Geschlecht",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66509,
+            "label": "male",
+            "value": "male"
+          }
+        }
+      }
+    },
+    {
+      "hash": "c2279061c9de7dbc3b1f859823e196df",
+      "attributes": {
+        "imageType": {
+          "id": 1252,
+          "key": "imageType",
+          "label": "Bild Typ",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66480,
+            "label": "Büste",
+            "value": "bust"
+          }
+        },
+        "imageFocus": {
+          "id": 1253,
+          "key": "imageFocus",
+          "label": "Bild Fokus",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66484,
+            "label": "Produkt",
+            "value": "product"
+          }
+        },
+        "imageView": {
+          "id": 1254,
+          "key": "imageView",
+          "label": "Bild Ansicht",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66486,
+            "label": "Frontalansicht",
+            "value": "front"
+          }
+        },
+        "imageNextDetailLevel": {
+          "id": 1257,
+          "key": "imageNextDetailLevel",
+          "label": "Bild Detaillevel",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66497,
+            "label": "1000",
+            "value": "1000"
+          }
+        },
+        "imageBackground": {
+          "id": 1258,
+          "key": "imageBackground",
+          "label": "Bild Hintergrund",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66506,
+            "label": "grau",
+            "value": "grey"
+          }
+        },
+        "imageGender": {
+          "id": 1259,
+          "key": "imageGender",
+          "label": "Bild Geschlecht",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66509,
+            "label": "male",
+            "value": "male"
+          }
+        }
+      }
+    },
+    {
+      "hash": "0e6fdba32027e2af7184725524737b4c",
+      "attributes": {
+        "imageType": {
+          "id": 1252,
+          "key": "imageType",
+          "label": "Bild Typ",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66481,
+            "label": "Model",
+            "value": "model"
+          }
+        },
+        "imageFocus": {
+          "id": 1253,
+          "key": "imageFocus",
+          "label": "Bild Fokus",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66484,
+            "label": "Produkt",
+            "value": "product"
+          }
+        },
+        "imageView": {
+          "id": 1254,
+          "key": "imageView",
+          "label": "Bild Ansicht",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66486,
+            "label": "Frontalansicht",
+            "value": "front"
+          }
+        },
+        "imageNextDetailLevel": {
+          "id": 1257,
+          "key": "imageNextDetailLevel",
+          "label": "Bild Detaillevel",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66497,
+            "label": "1000",
+            "value": "1000"
+          }
+        },
+        "imageBackground": {
+          "id": 1258,
+          "key": "imageBackground",
+          "label": "Bild Hintergrund",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66504,
+            "label": "weiß",
+            "value": "white"
+          }
+        },
+        "imageGender": {
+          "id": 1259,
+          "key": "imageGender",
+          "label": "Bild Geschlecht",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66509,
+            "label": "male",
+            "value": "male"
+          }
+        }
+      }
+    },
+    {
+      "hash": "0e6fdba32027e2af7184725524737b4c",
+      "attributes": {
+        "imageType": {
+          "id": 1252,
+          "key": "imageType",
+          "label": "Bild Typ",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66481,
+            "label": "Model",
+            "value": "model"
+          }
+        },
+        "imageFocus": {
+          "id": 1253,
+          "key": "imageFocus",
+          "label": "Bild Fokus",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66484,
+            "label": "Produkt",
+            "value": "product"
+          }
+        },
+        "imageView": {
+          "id": 1254,
+          "key": "imageView",
+          "label": "Bild Ansicht",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66486,
+            "label": "Frontalansicht",
+            "value": "front"
+          }
+        },
+        "imageNextDetailLevel": {
+          "id": 1257,
+          "key": "imageNextDetailLevel",
+          "label": "Bild Detaillevel",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66498,
+            "label": "30",
+            "value": "30"
+          }
+        },
+        "imageBackground": {
+          "id": 1258,
+          "key": "imageBackground",
+          "label": "Bild Hintergrund",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66506,
+            "label": "grau",
+            "value": "grey"
+          }
+        },
+        "imageGender": {
+          "id": 1259,
+          "key": "imageGender",
+          "label": "Bild Geschlecht",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66509,
+            "label": "male",
+            "value": "male"
+          }
+        }
+      }
+    },
+    {
+      "hash": "061db30e6044779e860aaaaf293c5431",
+      "attributes": {
+        "imageType": {
+          "id": 1252,
+          "key": "imageType",
+          "label": "Bild Typ",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66481,
+            "label": "Model",
+            "value": "model"
+          }
+        },
+        "imageFocus": {
+          "id": 1253,
+          "key": "imageFocus",
+          "label": "Bild Fokus",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66484,
+            "label": "Produkt",
+            "value": "product"
+          }
+        },
+        "imageView": {
+          "id": 1254,
+          "key": "imageView",
+          "label": "Bild Ansicht",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66487,
+            "label": "Rückansicht",
+            "value": "back"
+          }
+        },
+        "imageNextDetailLevel": {
+          "id": 1257,
+          "key": "imageNextDetailLevel",
+          "label": "Bild Detaillevel",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66497,
+            "label": "1000",
+            "value": "1000"
+          }
+        },
+        "imageBackground": {
+          "id": 1258,
+          "key": "imageBackground",
+          "label": "Bild Hintergrund",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66504,
+            "label": "weiß",
+            "value": "white"
+          }
+        },
+        "imageGender": {
+          "id": 1259,
+          "key": "imageGender",
+          "label": "Bild Geschlecht",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66509,
+            "label": "male",
+            "value": "male"
+          }
+        }
+      }
+    },
+    {
+      "hash": "061db30e6044779e860aaaaf293c5431",
+      "attributes": {
+        "imageType": {
+          "id": 1252,
+          "key": "imageType",
+          "label": "Bild Typ",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66481,
+            "label": "Model",
+            "value": "model"
+          }
+        },
+        "imageFocus": {
+          "id": 1253,
+          "key": "imageFocus",
+          "label": "Bild Fokus",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66484,
+            "label": "Produkt",
+            "value": "product"
+          }
+        },
+        "imageView": {
+          "id": 1254,
+          "key": "imageView",
+          "label": "Bild Ansicht",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66487,
+            "label": "Rückansicht",
+            "value": "back"
+          }
+        },
+        "imageNextDetailLevel": {
+          "id": 1257,
+          "key": "imageNextDetailLevel",
+          "label": "Bild Detaillevel",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66498,
+            "label": "30",
+            "value": "30"
+          }
+        },
+        "imageBackground": {
+          "id": 1258,
+          "key": "imageBackground",
+          "label": "Bild Hintergrund",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66506,
+            "label": "grau",
+            "value": "grey"
+          }
+        },
+        "imageGender": {
+          "id": 1259,
+          "key": "imageGender",
+          "label": "Bild Geschlecht",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66509,
+            "label": "male",
+            "value": "male"
+          }
+        }
+      }
+    },
+    {
+      "hash": "1a50802781b7af5afadf74db6d681b2a",
+      "attributes": {
+        "imageType": {
+          "id": 1252,
+          "key": "imageType",
+          "label": "Bild Typ",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66481,
+            "label": "Model",
+            "value": "model"
+          }
+        },
+        "imageFocus": {
+          "id": 1253,
+          "key": "imageFocus",
+          "label": "Bild Fokus",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66485,
+            "label": "Outfit",
+            "value": "combination"
+          }
+        },
+        "imageNextDetailLevel": {
+          "id": 1257,
+          "key": "imageNextDetailLevel",
+          "label": "Bild Detaillevel",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66497,
+            "label": "1000",
+            "value": "1000"
+          }
+        },
+        "imageBackground": {
+          "id": 1258,
+          "key": "imageBackground",
+          "label": "Bild Hintergrund",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66504,
+            "label": "weiß",
+            "value": "white"
+          }
+        },
+        "imageGender": {
+          "id": 1259,
+          "key": "imageGender",
+          "label": "Bild Geschlecht",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66509,
+            "label": "male",
+            "value": "male"
+          }
+        }
+      }
+    },
+    {
+      "hash": "1a50802781b7af5afadf74db6d681b2a",
+      "attributes": {
+        "imageType": {
+          "id": 1252,
+          "key": "imageType",
+          "label": "Bild Typ",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66481,
+            "label": "Model",
+            "value": "model"
+          }
+        },
+        "imageFocus": {
+          "id": 1253,
+          "key": "imageFocus",
+          "label": "Bild Fokus",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66485,
+            "label": "Outfit",
+            "value": "combination"
+          }
+        },
+        "imageNextDetailLevel": {
+          "id": 1257,
+          "key": "imageNextDetailLevel",
+          "label": "Bild Detaillevel",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66499,
+            "label": "10",
+            "value": "10"
+          }
+        },
+        "imageBackground": {
+          "id": 1258,
+          "key": "imageBackground",
+          "label": "Bild Hintergrund",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66506,
+            "label": "grau",
+            "value": "grey"
+          }
+        },
+        "imageGender": {
+          "id": 1259,
+          "key": "imageGender",
+          "label": "Bild Geschlecht",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66509,
+            "label": "male",
+            "value": "male"
+          }
+        }
+      }
+    },
+    {
+      "hash": "85d8ab83928ac505cad5b7731d5c1d4c",
+      "attributes": {
+        "imageType": {
+          "id": 1252,
+          "key": "imageType",
+          "label": "Bild Typ",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66481,
+            "label": "Model",
+            "value": "model"
+          }
+        },
+        "imageFocus": {
+          "id": 1253,
+          "key": "imageFocus",
+          "label": "Bild Fokus",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66483,
+            "label": "Detail",
+            "value": "detail"
+          }
+        },
+        "imageNextDetailLevel": {
+          "id": 1257,
+          "key": "imageNextDetailLevel",
+          "label": "Bild Detaillevel",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66497,
+            "label": "1000",
+            "value": "1000"
+          }
+        },
+        "imageBackground": {
+          "id": 1258,
+          "key": "imageBackground",
+          "label": "Bild Hintergrund",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66504,
+            "label": "weiß",
+            "value": "white"
+          }
+        },
+        "imageGender": {
+          "id": 1259,
+          "key": "imageGender",
+          "label": "Bild Geschlecht",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66509,
+            "label": "male",
+            "value": "male"
+          }
+        }
+      }
+    },
+    {
+      "hash": "85d8ab83928ac505cad5b7731d5c1d4c",
+      "attributes": {
+        "imageType": {
+          "id": 1252,
+          "key": "imageType",
+          "label": "Bild Typ",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66481,
+            "label": "Model",
+            "value": "model"
+          }
+        },
+        "imageFocus": {
+          "id": 1253,
+          "key": "imageFocus",
+          "label": "Bild Fokus",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66483,
+            "label": "Detail",
+            "value": "detail"
+          }
+        },
+        "imageNextDetailLevel": {
+          "id": 1257,
+          "key": "imageNextDetailLevel",
+          "label": "Bild Detaillevel",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66500,
+            "label": "50",
+            "value": "50"
+          }
+        },
+        "imageBackground": {
+          "id": 1258,
+          "key": "imageBackground",
+          "label": "Bild Hintergrund",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66506,
+            "label": "grau",
+            "value": "grey"
+          }
+        },
+        "imageGender": {
+          "id": 1259,
+          "key": "imageGender",
+          "label": "Bild Geschlecht",
+          "type": "",
+          "multiSelect": false,
+          "values": {
+            "id": 66509,
+            "label": "male",
+            "value": "male"
+          }
+        }
+      }
+    }
+  ],
+  "priceRange": {
+    "min": {
+      "currencyCode": "EUR",
+      "withTax": 2995,
+      "withoutTax": 2517,
+      "tax": {
+        "vat": {
+          "amount": 478,
+          "rate": 0.19
+        }
+      },
+      "appliedReductions": []
+    },
+    "max": {
+      "currencyCode": "EUR",
+      "withTax": 2995,
+      "withoutTax": 2517,
+      "tax": {
+        "vat": {
+          "amount": 478,
+          "rate": 0.19
+        }
+      },
+      "appliedReductions": []
+    }
+  }
+}
