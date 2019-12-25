@@ -2,25 +2,37 @@ import {
   createFiltersEndpointRequest,
 } from '@aboutyou/backbone/endpoints/filters/filters';
 import { execute } from '@aboutyou/backbone/helpers/execute';
+import { normalizeFilterParameters } from './utils';
 import { useAsyncLoader } from './useAsyncLoader';
 import { useCallback } from 'react';
 
 const SHOP_ID = 139;
 
-export const useFilterLoader = () => {
+// todo also make a call for update filters set
+
+export const useFilterLoader = ({ appliedFilters = {} }) => {
+
+  const { attrs, bools, maxPrice, minPrice } = normalizeFilterParameters(appliedFilters);
+
   const filters = useAsyncLoader(
     useCallback(
       () =>
         execute(
-          'https://api-cloud.aboutyou.de/v1/',
+          'http://127.0.0.1:9459/v1/',
           SHOP_ID,
           createFiltersEndpointRequest({
             where: {
               categoryId: 20290,
+              attributes: [
+                ...attrs,
+                ...bools
+              ],
+              maxPrice,
+              minPrice
             },
           }),
-        ).then(({ data }) => console.log(data) || data.entries),
-      [],
+        ).then(({ data }) => data),
+      [appliedFilters],
     ),
   );
 

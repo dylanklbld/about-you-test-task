@@ -1,24 +1,62 @@
-import { useCallback } from 'react';
-import { execute } from '@aboutyou/backbone/helpers/execute';
 import {
   APISortOrder,
   createProductsSearchEndpointRequest,
 } from '@aboutyou/backbone/endpoints/products/products';
-import { useAsyncLoader } from './useAsyncLoader';
+
+import { execute } from '@aboutyou/backbone/helpers/execute';
+import { normalizeFilterParameters } from './utils'
 import { normalizeProduct } from './normalizeProduct';
+import { useAsyncLoader } from './useAsyncLoader';
+import { useCallback } from 'react';
 
 const SHOP_ID = 139;
+export const useProductLoader = ({ appliedFilters }) => {
 
-export const useProductLoader = () => {
+  const { attrs, bools, maxPrice, minPrice } = normalizeFilterParameters(appliedFilters);
+
+  const getPriceRange = ({ min, max }) => ({
+    "min": {
+      "currencyCode": "EUR",
+      "appliedReductions": [
+        {
+          "category": "sale",
+          "type": "relative",
+          "amount": {
+            "relative": min,
+          }
+        }
+      ],
+    },
+    "max": {
+      "currencyCode": "EUR",
+      "appliedReductions": [
+        {
+          "category": "sale",
+          "type": "relative",
+          "amount": {
+            "relative": max,
+          }
+        }
+      ],
+    }
+  })
+
+  const priceRange = appliedFilters.range && appliedFilters.range["max_savings_percentage"]
+    ? getPriceRange(appliedFilters.range["max_savings_percentage"]) : true
+
+
   const products = useAsyncLoader(
     useCallback(
       () =>
         execute(
-          'http://0.0.0.0:9459/v1/',
+          'http://127.0.0.1:9459/v1/',
           SHOP_ID,
           createProductsSearchEndpointRequest({
             where: {
               categoryId: 20290,
+              attributes: [...attrs, ...bools],
+              maxPrice,
+              minPrice,
             },
             pagination: {
               page: 1,
@@ -33,11 +71,12 @@ export const useProductLoader = () => {
               attributes: {
                 withKey: ['brand'],
               },
-              priceRange: true,
+              priceRange: true
             },
-          }),
+          },
+          ),
         ).then(({ data }) => data.entities.map(normalizeProduct)),
-      [],
+      [appliedFilters],
     ),
   );
 
