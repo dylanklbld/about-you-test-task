@@ -4,7 +4,7 @@ import {
 } from '@aboutyou/backbone/endpoints/products/products';
 
 import { execute } from '@aboutyou/backbone/helpers/execute';
-import { normalizeFilterParameters } from './utils'
+import { extractFilterParameters } from './utils'
 import { normalizeProduct } from './normalizeProduct';
 import { useAsyncLoader } from './useAsyncLoader';
 import { useCallback } from 'react';
@@ -12,7 +12,7 @@ import { useCallback } from 'react';
 const SHOP_ID = 139;
 export const useProductLoader = ({ appliedFilters }) => {
 
-  const { attrs, bools, maxPrice, minPrice } = normalizeFilterParameters(appliedFilters);
+  const { attrs, bools, maxPrice, minPrice } = extractFilterParameters(appliedFilters);
 
   const getPriceRange = ({ min, max }) => ({
     "min": {

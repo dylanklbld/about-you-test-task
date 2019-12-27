@@ -1,4 +1,4 @@
-export const normalizeFilterParameters = ({ attributes, boolean, range }) => {
+export const extractFilterParameters = ({ attributes, boolean, range }) => {
 
   const { min: minPrice, max: maxPrice } = range && range.prices || {
     minPrice: null,

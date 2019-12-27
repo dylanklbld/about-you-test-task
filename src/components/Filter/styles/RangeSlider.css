@@ -5,15 +5,16 @@ section {
   text-align: center;
 }
 
-section input {
+section input[type=range] {
   pointer-events: none;
   position: absolute;
   overflow: hidden;
+  -webkit-appearance: none;
   left: 0;
   top: 15px;
   width: 100%;
   outline: none;
-  height: 18px;
+  height: 5px;
   margin: 0;
   padding: 0;
 }
@@ -22,8 +23,14 @@ section input::-webkit-slider-thumb {
   pointer-events: all;
   position: relative;
   cursor: pointer;
-  z-index: 1;
+  z-index: 2;
   outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #4CAF50;
 }
 
 section input::-moz-range-thumb {
@@ -31,7 +38,10 @@ section input::-moz-range-thumb {
   position: relative;
   z-index: 10;
   -moz-appearance: none;
-  width: 9px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
 }
 
 section input::-moz-range-track {

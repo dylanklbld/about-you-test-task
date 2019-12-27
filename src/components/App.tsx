@@ -1,7 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
 import Filter from './Filter/Filter';
-import Header from './Filter/Header';
+import Header from './Header';
 import ProductStream from './ProductStream';
 import React from 'react';
 import { filtersMock } from '../mock'
@@ -54,8 +54,6 @@ const App: React.FunctionComponent = () => {
 
 
   const updateAppliedFilters = (slug, type, value, item) => {
-    console.log(slug, type, value, item)
-    // apply this change to the filters data
     switch (type) {
       case 'attributes': {
         const updatedFilters = getUpdatedAttributeFilters({
@@ -81,12 +79,25 @@ const App: React.FunctionComponent = () => {
   }
 
   const resetAppliedFilter = (slug, type) => {
+    const updatedFilters = JSON.parse(JSON.stringify(appliedFilters))
+
     if (appliedFilters[`${type}`] && appliedFilters[`${type}`][`${slug}`]) {
-      const updatedFilters = JSON.parse(JSON.stringify(appliedFilters))
       delete updatedFilters[`${type}`][`${slug}`]
 
       setAppliedFilters(updatedFilters)
     }
+  }
+
+  const resetAppliedFilters = (resetFilters) => {
+    const updatedFilters = JSON.parse(JSON.stringify(appliedFilters))
+
+    resetFilters.map(rf => {
+      if (appliedFilters[`${rf.type}`] && appliedFilters[`${rf.type}`][`${rf.slug}`]) {
+        delete updatedFilters[`${rf.type}`][`${rf.slug}`]
+      }
+    })
+
+    setAppliedFilters(updatedFilters)
   }
 
   return (
@@ -94,10 +105,10 @@ const App: React.FunctionComponent = () => {
       <GlobalStyle />
       <UpperPanel>
         <Header />
-        <button name="openFilters" onClick={() => setFiltersOpen(!filtersOpen)}>Filter</button>
+        <FilterButton name="openFilters" onClick={() => setFiltersOpen(!filtersOpen)}>Filter</FilterButton>
       </UpperPanel>
       <FilterSidebar isOpen={filtersOpen} ref={filterPanelRef}>
-        <Filter filters={filters} appliedFilterValues={appliedFilters} {...{ updateAppliedFilters, resetAppliedFilter }} />
+        <Filter filters={filters} appliedFilterValues={appliedFilters} {...{ updateAppliedFilters, resetAppliedFilters }} />
       </FilterSidebar>
       <Layout>
         <ProductStream products={products} />
@@ -109,6 +120,7 @@ const App: React.FunctionComponent = () => {
 const UpperPanel = styled.div`
   display: flex;
   flex-direction: row; 
+  justify-content: space-between;
 `
 
 const GlobalStyle = createGlobalStyle`
@@ -135,10 +147,18 @@ const FilterSidebar = styled.div`
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   right: 0;
-  background-color: gray; /* Black*/
+  background-color: #8a8888;
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+`
+const FilterButton = styled.button`
+font-family: 'Open Sans Condensed';
+  font-weight: 700;
+  background: #333333;
+  display: inline-block;
+  color: #fff;
+  width: 25vw;
 `
 
 export default App;

@@ -1,83 +1,71 @@
 import React, { FC } from 'react';
+import { debounce, isEmpty, omit } from 'lodash'
 
-import { Filter } from '../../types/Filter';
+import { AttributesFilterView } from './FilterTypes/AttributesFilterView'
+import { BooleanFilterView } from './FilterTypes/BooleanFilterView'
 import Foldable from './Foldable'
-import ProductTile from '../ProductTile';
-import { RangeSlider } from './RangeSlider'
-import { debounce } from 'lodash'
+import { RangeFilterView } from './FilterTypes/RangeFilterView'
 import styled from 'styled-components';
 
 interface Props {
   filters: any[];
   appliedFilterValues: any;
   updateAppliedFilters: any;
+  resetAppliedFilters: any;
+}
+
+interface SalesHintProps {
+  min: number;
+  max: number;
 }
 
 const FilterAreaWrapper = styled.div`
-width: 100%;
-height: 100%;
-overflow-y:auto`
+  width: 100%;
+  height: 100%;
+  overflow-y:auto`
 
-const AttributesFilterView: FC<Props> = ({ handleChange, handleReset, slug, values, filterValues }) => {
-  const isChecked = (id) => {
-    return filterValues.includes(id)
+const ResetButton = styled.button`
+  &:disabled {
+    opacity: 0.5;
   }
+`
 
-  return <FilterAreaWrapper>
-    {values.map(item => (
-      <div key={item.name} className="filter-cb">
-        <label>
-          <input type='checkbox' name={item.name} checked={isChecked(item.id)} onChange={(e) => {
-            const { checked } = e.target
-            handleChange(checked, item)
-          }} />
-          {item.name}
-        </label>
-      </div>
-    ))}
-  </FilterAreaWrapper>
+const Hint = styled.div`
+  background: #4679BD;
+  flex: auto;
+  align-items: center;
+  display: flex;
+  min-height: 50px;
+  border-radius: 4px;
+  opacity:${props => props.disabled ? 0.5 : 1};
+`
+
+const SalesHint: FC<SalesHintProps> = ({ min, max, disabled }) => {
+  const [minSaving, setMinSaving] = React.useState(min)
+  const [maxSaving, setMaxSaving] = React.useState(max)
+
+  const minSavinPart = minSaving !== 0 && minSaving !== maxSaving && <React.Fragment>{` from`}<strong>{`${minSaving}%`}</strong>`</React.Fragment>
+
+  React.useEffect(() => {
+    if (min !== max && max !== 0) {
+      setMinSaving(min)
+      setMaxSaving(max)
+    }
+  }, [min, max])
+
+  return <Hint disabled={disabled}>
+    {`You can save up`}{minSavinPart}{` to ${maxSaving}% upon this SALE!`}
+  </Hint>
 }
 
-const RangeFilterView: FC<Props> = ({ handleChange, name, slug, values, filterValues }) => {
-  const { min, max } = values[0]
-
-  const debouncedChange = debounce((value) => {
-    handleChange(value, { slug })
-  }, 200)
-
-  return <FilterAreaWrapper>
-    <label>
-      {name}
-      <div>{min}</div>
-      <RangeSlider value={filterValues || { min, max }} min={min} max={max} onChange={(value) => {
-        debouncedChange(value)
-      }} />
-      <div>{max}</div>
-    </label>
-  </FilterAreaWrapper>
-}
-
-const BooleanFilterView: FC<Props> = ({ handleChange, name, slug, filterValue }) => {
-  return <FilterAreaWrapper>
-    <label>
-      {name}
-      <input type='checkbox' name={name} checked={filterValue} value={filterValue} onChange={(e) => {
-        const { checked } = e.target
-        handleChange(checked, { slug })
-      }} />
-    </label>
-  </FilterAreaWrapper>
-}
-
-const FilterView: FC<Props> = ({ filters, appliedFilterValues, updateAppliedFilters, resetAppliedFilter }) => {
+const FilterView: FC<Props> = ({ filters, appliedFilterValues, updateAppliedFilters, resetAppliedFilters }) => {
 
   const handleFiltersChange = (slug, type) => (value, item) => {
     updateAppliedFilters(slug, type, value, item || { slug: item.slug })
   }
 
-  const handleReset = (slug, type) => {
-    resetAppliedFilter(slug, type)
-  }
+  const handleReset = (slug, type) => resetAppliedFilters([{ slug, type }])
+
 
   const getFilterAreaByTheType = ({ filter, appliedFilterValues }) => {
     const { name, type, values, slug } = filter;
@@ -88,13 +76,15 @@ const FilterView: FC<Props> = ({ filters, appliedFilterValues, updateAppliedFilt
         return <AttributesFilterView {...{ values, slug }} filterValues={filterValues[`${filter.slug}`] || []} handleChange={handleFiltersChange(slug, type)} />
       }
       case 'range':
-        return (values[0].min !== values[0].max) ?
-          <RangeFilterView name={name} filterValues={filterValues[`${filter.slug}`] || null} {...{ values, slug }} handleChange={handleFiltersChange(slug, type)} />
+        return (values[0] && (values[0].min !== values[0].max)) ?
+          <RangeFilterView name={name}
+            filterValues={filterValues[`${filter.slug}`] || null}
+            {...{ values, slug }} handleChange={handleFiltersChange(slug, type)} />
           : null
       case 'boolean': {
         return <BooleanFilterView name={name}
           filterValues={filterValues[`${filter.slug}`] || false}
-          {...{ values, slug }} handleChange={handleFiltersChange(slug, type)} />
+          {...{ slug }} handleChange={handleFiltersChange(slug, type)} />
       }
     }
   }
@@ -104,73 +94,65 @@ const FilterView: FC<Props> = ({ filters, appliedFilterValues, updateAppliedFilt
 
     if (!filterAreaComponent) return null
 
-    const { slug, name, type } = filter
-    const isFilterApplied = appliedFilterValues[`${type}`] && appliedFilterValues[`${type}`][`${slug}`]
+    const { slug, name, type } = filter;
+    const isFilterApplied = appliedFilterValues[`${type}`] && appliedFilterValues[`${type}`][`${slug}`] && !isEmpty(appliedFilterValues[`${type}`][`${slug}`])
 
     return <div key={slug}>
-      <Foldable name={name}>
-        <button disabled={!isFilterApplied} onClick={() => handleReset(slug, type)}>Reset</button>
+      <Foldable title={name} renderExtraButton={
+        () => <ResetButton disabled={!isFilterApplied} onClick={() => handleReset(slug, type)}>Reset</ResetButton>
+      }>
         {filterAreaComponent}
       </Foldable>
     </div>
   }
 
+  const renderPriceAndSalesSection = () => {
+    const priceRangeFilterData = filters.find(v => v.slug === 'prices')
+    const saleFilterData = filters.find(v => v.slug === 'sale')
+    const savingsPercentage = filters.find(v => v.slug === 'max_savings_percentage')
+
+    const priceRangeFilterComponent = getFilterAreaByTheType({ filter: priceRangeFilterData, appliedFilterValues })
+    const saleFilterComponent = getFilterAreaByTheType({ filter: saleFilterData, appliedFilterValues })
+
+    const isFilterApplied = (type, slug) => appliedFilterValues[`${type}`] && appliedFilterValues[`${type}`][`${slug}`] && !isEmpty(appliedFilterValues[`${type}`][`${slug}`])
+    const disableResetButton = !isFilterApplied('range', 'prices') && !isFilterApplied('boolean', 'sale')
+
+    return <Foldable title={"Prices & Sale"} renderExtraButton={
+      () => <ResetButton disabled={disableResetButton} onClick={() => {
+        resetAppliedFilters([{ slug: 'prices', type: 'range' }, { slug: 'sale', type: 'boolean' }])
+      }}>Reset</ResetButton>
+    }>
+      <div>
+        {priceRangeFilterComponent}
+        {saleFilterComponent}
+        <SalesHint disabled={savingsPercentage.values[0].max === 0} min={savingsPercentage.values[0].min} max={savingsPercentage.values[0].max} />
+      </div>
+    </Foldable>
+  }
+
+  const omitSlugs = ['prices', 'sale', 'max_savings_percentage']
+
+  // NB: here I will omit filters with slugs: 'prices', 'sale' and 'max_savings_percentage' to not render it by "renderFilterSection"
+  // explanation: 
+  // 1) since prices ranges are changing depends on if 'sale' filter is on
+  // 2) I couldn't find how to use 'max_savings_percentage' parameter in product api request, 
+  // but will to use it as a notification 
   return (
     <React.Fragment>
       <Wrapper>
-        {filters.map(renderFilterSection)}
+        {filters.filter(f => !omitSlugs.includes(f.slug)).map(renderFilterSection)}
+        {filters.length && renderPriceAndSalesSection()}
       </Wrapper>
       <button type='button'>
         Submit
       </button>
     </React.Fragment>
   );
-};
-
+}
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const ImageWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  background-color: rgb(242, 242, 242);
-  height: 0px;
-  padding-top: 133%;
-  border-radius: 2px;
-  overflow: hidden;
-`;
-
-const Image = styled.img`
-  position: absolute;
-  height: auto;
-  top: 5%;
-  left: 5%;
-  right: 5%;
-  bottom: 5%;
-  max-height: 90%;
-  max-width: 90%;
-  margin: auto;
-  object-position: center center;
-  height: 100%;
-  width: 100%;
-  object-fit: contain;
-`;
-
-const Name = styled.div`
-  font-size: 12px;
-  font-weight: bold;
-`;
-
-const Price = styled.div`
-  font-size: 12px;
-`;
-
-const Content = styled.div`
-  line-height: 1.4em;
-  padding: 15px;
 `;
 
 export default FilterView;

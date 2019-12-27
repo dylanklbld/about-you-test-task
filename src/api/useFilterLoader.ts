@@ -2,17 +2,14 @@ import {
   createFiltersEndpointRequest,
 } from '@aboutyou/backbone/endpoints/filters/filters';
 import { execute } from '@aboutyou/backbone/helpers/execute';
-import { normalizeFilterParameters } from './utils';
+import { extractFilterParameters } from './utils';
 import { useAsyncLoader } from './useAsyncLoader';
 import { useCallback } from 'react';
 
 const SHOP_ID = 139;
 
-// todo also make a call for update filters set
-
 export const useFilterLoader = ({ appliedFilters = {} }) => {
-
-  const { attrs, bools, maxPrice, minPrice } = normalizeFilterParameters(appliedFilters);
+  const { attrs, bools, maxPrice, minPrice } = extractFilterParameters(appliedFilters);
 
   const filters = useAsyncLoader(
     useCallback(
